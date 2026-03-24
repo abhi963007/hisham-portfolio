@@ -595,21 +595,37 @@ nav {
 .menu-toggle {
     display: none;
     cursor: pointer;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--outline-variant);
+    border-radius: 50%;
+    display: none; /* Will be shown in media queries */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--tertiary);
 }
 
 .bar {
     display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
+    width: 20px;
+    height: 2px;
+    margin: 2px 0;
     background-color: var(--on-surface);
     transition: var(--transition);
+    border-radius: 10px;
 }
 
 /* iPad / Tablet Optimization (768px to 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .menu-toggle {
-        display: block;
+        display: flex;
     }
 
     .nav-links {
@@ -680,7 +696,7 @@ nav {
 /* Mobile Optimization (up to 767px) */
 @media (max-width: 767px) {
     .menu-toggle {
-        display: block;
+        display: flex;
     }
 
     .container {
@@ -817,12 +833,13 @@ nav {
 /* Specific Menu UI improvements */
 .menu-toggle.active .bar:nth-child(2) {
     opacity: 0;
+    transform: translateX(10px);
 }
 
 .menu-toggle.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
 }
